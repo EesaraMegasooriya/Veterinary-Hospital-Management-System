@@ -67,84 +67,96 @@ function Users() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <table className="">
-          <thead>
+    <div className="bg-gray-100 min-h-screen py-10 px-5">
+      <div className="bg-orange-200 mx-14 h-[770px] rounded-2xl ">
+        <div className="text-center text-3xl font-bold py-6  text-black rounded-t-lg">User Management</div>
+        <table className="min-w-full table-auto">
+          <thead className="text-xl text-center">
             <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Animal Type</th>
-              <th>Actions</th>
+              <th className="py-4 px-6 text-left">ID</th>
+              <th className="py-4 px-6 text-left">Email</th>
+              <th className="py-4 px-6 text-left">Password</th>
+              <th className="py-4 px-6 text-left">Name</th>
+              <th className="py-4 px-6 text-left">Address</th>
+              <th className="py-4 px-6 text-left">Animal Type</th>
+              <th className="py-4 px-6 text-left">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-200">
             {users.map((user) => (
-              <tr key={user.ID}>
+              <tr key={user.ID} className="hover:bg-gray-50">
                 {editingUserId === user.ID ? (
-                  // If the user is being edited, show the form
                   <>
-                    <td>{user.ID}</td>
-                    <td>
+                    <td className="py-4 px-6">{user.ID}</td>
+                    <td className="py-4 px-6">
                       <input
+                        className="border border-gray-300 p-2 rounded-lg w-full"
                         type="email"
                         name="Email"
                         value={editFormData.Email}
                         onChange={handleInputChange}
                       />
                     </td>
-                    <td>
+                    <td className="py-4 px-6">
                       <input
+                        className="border border-gray-300 p-2 rounded-lg w-full"
                         type="password"
                         name="Password"
                         value={editFormData.Password}
                         onChange={handleInputChange}
                       />
                     </td>
-                    <td>
+                    <td className="py-4 px-6">
                       <input
+                        className="border border-gray-300 p-2 rounded-lg w-full"
                         type="text"
                         name="Name"
                         value={editFormData.Name}
                         onChange={handleInputChange}
                       />
                     </td>
-                    <td>
+                    <td className="py-4 px-6">
                       <input
+                        className="border border-gray-300 p-2 rounded-lg w-full"
                         type="text"
                         name="Address"
                         value={editFormData.Address}
                         onChange={handleInputChange}
                       />
                     </td>
-                    <td>
+                    <td className="py-4 px-6">
                       <input
+                        className="border border-gray-300 p-2 rounded-lg w-full"
                         type="text"
                         name="AnimalType"
                         value={editFormData.AnimalType}
                         onChange={handleInputChange}
                       />
                     </td>
-                    <td>
-                      <button className="btn" onClick={handleUpdate}>Save</button>
-                      <button className="btn" onClick={() => setEditingUserId(null)}>Cancel</button>
+                    <td className="py-4 px-6 flex gap-4">
+                      <button className="bg-green-500 text-white px-4 py-2 rounded-lg" onClick={handleUpdate}>
+                        Save
+                      </button>
+                      <button className="bg-red-500 text-white px-4 py-2 rounded-lg" onClick={() => setEditingUserId(null)}>
+                        Cancel
+                      </button>
                     </td>
                   </>
                 ) : (
-                  // Otherwise, show the user's data
                   <>
-                    <td>{user.ID}</td>
-                    <td>{user.Email}</td>
-                    <td>{user.Password}</td>
-                    <td>{user.Name}</td>
-                    <td>{user.Address}</td>
-                    <td>{user.AnimalType}</td>
-                    <td>
-                      <button className="btn" onClick={() => handleEditClick(user)}>Edit</button>
-                      <button className="btn" onClick={() => handleDelete(user.ID)}>Delete</button>
+                    <td className="py-4 px-6">{user.ID}</td>
+                    <td className="py-4 px-6">{user.Email}</td>
+                    <td className="py-4 px-6">{user.Password}</td>
+                    <td className="py-4 px-6">{user.Name}</td>
+                    <td className="py-4 px-6">{user.Address}</td>
+                    <td className="py-4 px-6">{user.AnimalType}</td>
+                    <td className="py-4 px-6 flex gap-4">
+                      <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg" onClick={() => handleEditClick(user)}>
+                        Edit
+                      </button>
+                      <button className="bg-red-500 text-white px-4 py-2 rounded-lg" onClick={() => handleDelete(user.ID)}>
+                        Delete
+                      </button>
                     </td>
                   </>
                 )}
