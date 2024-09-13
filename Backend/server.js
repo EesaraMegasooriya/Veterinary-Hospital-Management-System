@@ -43,6 +43,24 @@ app.post('/createUser', async (req, res) => {
   }
 });
 
+
+app.put('/users/:id', async (req, res) => {
+    try {
+      const updatedUser = await UserModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true } // Return the updated document and run validators
+      );
+      if (!updatedUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.status(200).json(updatedUser);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
+  
+
 // DELETE request to delete a user by MongoDB _id
 app.delete('/users/:id', async (req, res) => {
     try {
