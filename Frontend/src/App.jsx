@@ -1,26 +1,21 @@
-import { useState } from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import './App.css'
-import Users from '../src/Components/Users'
-import CreateUser from '../src/Components/CreateUser'
-import UpdateUser from '../src/Components/UpdateUser'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Users from '../src/Components/Users';
+import Login from '../src/Components/Login';
+import Create from '../src/Components/CreateUser';
+import Header from '../src/Components/Header';
 
 function App() {
-
-
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Users />} />
-          <Route path="/create" element={<CreateUser />} />
-          <Route path="/update" element={<UpdateUser />} />
-        </Routes>
-      </BrowserRouter>
-
-    </div>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/" element={<Login />} /> {/* Redirect to login by default */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

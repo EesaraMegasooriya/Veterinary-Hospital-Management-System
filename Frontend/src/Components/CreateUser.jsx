@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import Dog from '../assets/dog.jpg'
 
 function CreateUser() {
   const [name, setName] = useState("");
@@ -25,35 +26,45 @@ function CreateUser() {
   };
 
   return (
-    <div>
-      <h1>Create User</h1>
+    <div className='bg-white '>
+        <div className='bg-orange-200 mx-14 h-[860px] rounded-2xl flex '>
+        <div className='flex-1'>
+        <h1 className='text-6xl text-center mt-10'>Hi there !</h1>
+      <div className="text-center mt-11">Welcome to VetCare, Community Dashboard</div>
       <form onSubmit={Submit}>
+      <div className=' items-center flex justify-center flex-col gap-9' >
+          
+          <input type="text" value={id} placeholder='ID' className='placeholder:text-gray-500 rounded-lg px-4 w-96 py-2 mt-10 text-1xl bg-orange-200 border-4 border-white' onChange={(e) => setId(e.target.value)} />
+        
         <div>
-          <label>ID</label>
-          <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+          
+          <input type="email" className=' placeholder:text-gray-500 rounded-lg px-4 w-96 py-2  text-1xl bg-orange-200 border-4 border-white' value={email} placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          
+          <input type="password" className=' placeholder:text-gray-500 rounded-lg px-4 w-96 py-2  text-1xl bg-orange-200 border-4 border-white' value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div>
-          <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          
+          <input type="text" className=' placeholder:text-gray-500 rounded-lg px-4 w-96 py-2  text-1xl bg-orange-200 border-4 border-white' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label>Name</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          
+          <input type="text" className=' placeholder:text-gray-500 rounded-lg px-4 w-96 py-2  text-1xl bg-orange-200 border-4 border-white' placeholder='Address' value={address} onChange={(e) => setAddress(e.target.value)} />
         </div>
         <div>
-          <label>Address</label>
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+          
+          <input type="text" className=' placeholder:text-gray-500 rounded-lg px-4 w-96 py-2  text-1xl bg-orange-200 border-4 border-white' placeholder='Animal Type' value={animalType} onChange={(e) => setAnimalType(e.target.value)} />
         </div>
-        <div>
-          <label>Animal Type</label>
-          <input type="text" value={animalType} onChange={(e) => setAnimalType(e.target.value)} />
+        <button type="submit" className='rounded-full mt-6 bg-black text-white px-5 w-80 py-2'>Sign Up</button>
         </div>
-        <button type="submit">Create User</button>
+        <div className='text-center mt-10'>Already have an account? <a href='/login' className='text-blue-500'>Login</a></div>
       </form>
+      </div>
+      <div className=' '>
+        <img src={Dog} alt='logo' className=' rounded-2xl h-full'/>
+      </div>
+      </div>
     </div>
   );
 }
