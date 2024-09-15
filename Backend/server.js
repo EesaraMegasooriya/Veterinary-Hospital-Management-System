@@ -17,14 +17,14 @@ app.get('/', (req, res) => {
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  dbName: 'web'  // Explicitly set the database name
+  dbName: 'web'  // Explicitly specify the database name
 })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
-  });
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((err) => {
+  console.error('Error connecting to MongoDB:', err); // Log full error
+});
 
 // GET request to retrieve all users
 app.get('/users', (req, res) => {
@@ -37,6 +37,7 @@ app.post('/createUser', async (req, res) => {
   try {
     // Create a new user with the data from the request body
     const newUser = new UserModel({
+      ID: req.body.ID,
       Email: req.body.Email,
       Password: req.body.Password,
       Name: req.body.Name,
